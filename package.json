@@ -1,0 +1,21 @@
+{
+  "name": "mc2026-digital-voting",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": ["apps/*", "packages/*"],
+  "scripts": {
+    "dev": "concurrently -n api,web -c cyan,magenta \"npm run dev -w @mc2026/api\" \"npm run dev -w @mc2026/web\"",
+    "build": "npm run build -w @mc2026/shared && npm run build -w @mc2026/api && npm run build -w @mc2026/web",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "db:migrate": "npm run db:migrate -w @mc2026/api",
+    "db:seed": "npm run db:seed -w @mc2026/api",
+    "demo:reset": "npm run demo:reset -w @mc2026/api"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "concurrently": "^9.1.2",
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.9"
+  }
+}

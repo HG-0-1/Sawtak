@@ -1,0 +1,173 @@
+/*
+ * Maker Collective event UI theme — presentation palette only.
+ *
+ * These are intentionally NOT presented as official Maker Collective, CPF
+ * Makerspace, or Crown Prince Foundation brand colours. They are a contained
+ * event treatment until an approved brand guide is supplied.
+ *
+ * ROLLBACK: remove the last import in ../main.tsx. No component or API code
+ * depends on this stylesheet.
+ */
+
+:root {
+  --mc-ink: #211426;
+  --mc-ink-strong: #150b1a;
+  --mc-copy: #5e5362;
+  --mc-line: #eadfe7;
+  --mc-canvas: #fffdfa;
+  --mc-surface: #ffffff;
+  --mc-surface-soft: #faf5f8;
+  --mc-primary: #6c35c6;
+  --mc-primary-strong: #5724a9;
+  --mc-primary-soft: #f0e9ff;
+  --mc-peach: #ff8267;
+  --mc-amber: #ffc65a;
+  --mc-cyan: #68e5d0;
+  --mc-blue: #6d8fff;
+  --mc-pink: #ee71b4;
+  --mc-tv: #09080d;
+  --mc-tv-panel: rgba(25, 18, 31, .72);
+
+  --ink: var(--mc-ink);
+  --muted: var(--mc-copy);
+  --line: var(--mc-line);
+  --soft: var(--mc-surface-soft);
+  --rausch: var(--mc-primary);
+  --rausch-deep: var(--mc-primary-strong);
+  --dark: var(--mc-tv);
+  --cyan: var(--mc-cyan);
+  --blue: var(--mc-blue);
+  --violet: #b792ff;
+  --amber: var(--mc-amber);
+  color: var(--mc-ink);
+  background: var(--mc-canvas);
+}
+
+::selection { background: #dfd0ff; color: var(--mc-ink-strong); }
+
+input, textarea {
+  border-color: var(--mc-line);
+  color: var(--mc-ink);
+  background: var(--mc-surface);
+}
+
+input:focus, textarea:focus {
+  border-color: var(--mc-primary);
+  box-shadow: 0 0 0 3px rgba(108, 53, 198, .14);
+}
+
+.maker-logo { color: var(--mc-ink); }
+.maker-logo .mark { color: var(--mc-primary); }
+.maker-logo em { color: #887b89; }
+.maker-logo-dark { color: #fff; }
+.maker-logo-dark .mark { color: var(--mc-cyan); }
+
+.primary, .admin-primary, .vote-button {
+  background: var(--mc-primary);
+  box-shadow: 0 6px 15px rgba(87, 36, 169, .18);
+}
+
+.primary:hover, .admin-primary:hover, .vote-button:hover {
+  background: var(--mc-primary-strong);
+  box-shadow: 0 9px 20px rgba(87, 36, 169, .24);
+}
+
+.primary:disabled, .admin-primary:disabled { background: #d9c8f8; }
+.secondary, .admin-secondary { border-color: var(--mc-line); color: var(--mc-ink); }
+.text-button { color: var(--mc-ink); }
+.loader { border-color: #eadfe7; border-top-color: var(--mc-primary); }
+
+/* Visitor: warm, friendly and intentionally calm around the voting action. */
+.visitor-shell { background: var(--mc-canvas); }
+.visitor-header {
+  background: rgba(255, 253, 250, .9);
+  border-bottom-color: rgba(234, 223, 231, .82);
+}
+.lang { background: var(--mc-surface); border-color: var(--mc-line); color: var(--mc-ink); }
+.register-art { background: linear-gradient(135deg, #201229 0%, #371c50 55%, #6c35c6 125%); }
+.register-orb.one { background: var(--mc-peach); }
+.register-orb.two { background: #7d7cf7; }
+.register-points svg { color: var(--mc-cyan); }
+.consent input, .check-line input { accent-color: var(--mc-primary); }
+.otp-symbol { color: var(--mc-primary); background: var(--mc-primary-soft); }
+
+.vote-hero {
+  background:
+    radial-gradient(circle at 88% 6%, rgba(255, 206, 115, .84), transparent 30%),
+    radial-gradient(circle at 7% 94%, rgba(112, 229, 214, .47), transparent 34%),
+    linear-gradient(128deg, #4c208e 0%, #733acb 46%, #e46ea7 100%);
+  box-shadow: inset 0 -1px rgba(255, 255, 255, .2);
+}
+.hero-flare { background: #f3b544; opacity: .36; }
+.vote-hero:after { background: var(--mc-cyan); opacity: .34; }
+.count-bubble { background: var(--mc-primary-soft); color: #725e7b; }
+.count-bubble b { color: var(--mc-primary-strong); }
+.category-tabs button { border-color: var(--mc-line); background: var(--mc-surface); color: var(--mc-copy); }
+.category-tabs button.active { background: var(--mc-ink); border-color: var(--mc-ink); }
+.maker-photo { border-radius: 18px; background: #eee8ef; }
+.maker-photo>strong { background: var(--mc-ink); }
+.maker-info p, .vote-heading p { color: var(--mc-copy); }
+.done-card { background: var(--mc-primary-soft); }
+.done-card>div { background: var(--mc-primary); }
+.vote-modal { border-radius: 23px 23px 14px 14px; }
+.visitor-results-link { background: var(--mc-surface-soft); border-color: var(--mc-line); color: var(--mc-ink); }
+
+/* Mobile results echo the room display while still belonging to the warm visitor UI. */
+.visitor-results-hero {
+  background:
+    radial-gradient(circle at 95% 4%, rgba(104, 229, 208, .66), transparent 31%),
+    radial-gradient(circle at 6% 110%, rgba(255, 190, 92, .35), transparent 36%),
+    linear-gradient(130deg, #180c21, #2a1641 56%, #5b2991);
+}
+.visitor-results-total>div { background: var(--mc-surface-soft); }
+.visitor-result-category { border-color: var(--mc-line); }
+.visitor-result-category header, .visitor-result-row { border-bottom-color: #f0e8ee; }
+.visitor-result-bar { background: #eee5f3; }
+.visitor-result-bar i { background: linear-gradient(90deg, var(--mc-primary), var(--mc-pink)); }
+
+/* Admin: make operational controls feel connected to the event without losing utility. */
+.admin-shell { background: #faf7fa; color: var(--mc-ink); }
+.admin-sidebar { background: linear-gradient(180deg, #180d20, #291337); }
+.admin-user>span { background: var(--mc-primary); }
+.admin-sidebar nav button.active, .admin-sidebar nav button:hover { background: rgba(184, 146, 255, .18); }
+.status-chip.open { color: #076953; border-color: #a9e0d0; background: #edfff9; }
+.control-banner {
+  background:
+    radial-gradient(circle at 90% 0%, rgba(255, 190, 92, .22), transparent 33%),
+    linear-gradient(115deg, #211426, #48226c);
+}
+.stat-card, .admin-card { border-color: var(--mc-line); }
+.stat-card>span { background: var(--mc-primary-soft); color: var(--mc-primary); }
+.results-admin a { color: var(--mc-primary-strong); }
+.maker-form { background: var(--mc-surface-soft); border-color: var(--mc-line); }
+.settings-card textarea { background: #180d20; }
+
+/* TV / QR: near-black ink, brighter signal colours, and stronger edge contrast. */
+.display, .qr-display { background: var(--mc-tv); }
+.results-display {
+  background:
+    radial-gradient(ellipse 48% 52% at 50% 40%, rgba(99, 48, 148, .38), transparent 74%),
+    radial-gradient(ellipse 35% 36% at 82% 87%, rgba(0, 125, 150, .18), transparent 75%),
+    var(--mc-tv);
+}
+.display-nav { background: rgba(9, 8, 13, .88); }
+.result-panel { background: var(--mc-tv-panel); border-color: rgba(255, 255, 255, .24); }
+.result-panel header { border-bottom-color: rgba(255, 255, 255, .17); }
+.result-panel article { border-bottom-color: rgba(255, 255, 255, .12); }
+.bar { background: #40354a; }
+.mesh { opacity: .82; }
+.mesh.a { background: #156ee4; }
+.mesh.b { background: #e52d91; }
+.mesh.c { background: #f1a727; }
+.qr-copy h1 span:last-child {
+  background: linear-gradient(95deg, var(--mc-cyan), #83a5ff 42%, #ef80bc 69%, #ffd372);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+.qr-stage>img { box-shadow: 0 30px 100px rgba(0, 0, 0, .56), 0 0 0 1px rgba(255, 255, 255, .24); }
+
+@media (max-width: 680px) {
+  .vote-hero { min-height: 224px; }
+  .maker-photo { border-radius: 16px; }
+}

@@ -1,0 +1,35 @@
+openapi: 3.1.0
+info:
+  title: Maker Collective 2026 Voting API
+  version: 0.1.0
+paths:
+  /healthz:
+    get:
+      responses: { '200': { description: Liveness response } }
+  /api/presence/redeem:
+    post:
+      requestBody:
+        required: true
+        content: { application/json: { schema: { type: object, required: [token], properties: { token: { type: string } } } } }
+      responses: { '200': { description: Presence cookie set }, '400': { description: Invalid or expired code } }
+  /api/auth/otp/request:
+    post:
+      requestBody:
+        required: true
+        content: { application/json: { schema: { type: object, required: [name, phone, consent], properties: { name: { type: string }, phone: { type: string }, consent: { type: boolean } } } } }
+      responses: { '200': { description: Challenge created }, '403': { description: Access policy rejected } }
+  /api/auth/otp/verify:
+    post:
+      requestBody:
+        required: true
+        content: { application/json: { schema: { type: object, required: [challengeId, code], properties: { challengeId: { type: string, format: uuid }, code: { type: string, pattern: '^\\d{6}$' } } } } }
+      responses: { '200': { description: Visitor cookie set } }
+  /api/votes:
+    post:
+      requestBody:
+        required: true
+        content: { application/json: { schema: { type: object, required: [categoryId, exhibitorId], properties: { categoryId: { type: string, format: uuid }, exhibitorId: { type: string, format: uuid } } } } }
+      responses: { '201': { description: Vote committed }, '409': { description: Vote already cast or voting closed } }
+  /api/results/stream:
+    get:
+      responses: { '200': { description: Server-sent snapshots, content: { text/event-stream: {} } } }
